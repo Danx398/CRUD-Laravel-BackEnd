@@ -24,16 +24,24 @@
                     <tbody>
                         @foreach ($items as $item)
                             <tr>
-                                <td>{{$item->nombre}}</td>
-                                <td>{{$item->marca}}</td>
-                                <td>{{$item->modelo}}</td>
-                                <td>{{$item->ram}}</td>
-                                <td>{{$item->procesador}}</td>
-                                <td>{{$item->discoDuro}}</td>
-                                <td>{{$item->descripcion}}</td>
-                                <td><img src="{{$item->url}}" alt="" style="width: 100px"></td>
-                                <td><a href="{{ route('edit',$item->id) }}" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></a></td>
-                            <td><a href="{{route('show',$item->id)}}" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a></td>
+                                <td>{{ $item->nombre }}</td>
+                                <td>{{ $item->marca }}</td>
+                                <td>{{ $item->modelo }}</td>
+                                <td>{{ $item->ram }}</td>
+                                <td>{{ $item->procesador }}</td>
+                                <td>{{ $item->discoDuro }}</td>
+                                <td>{{ $item->descripcion }}</td>
+                                <td>
+                                    @if ($item->url == 'Sin imagen')
+                                    Sin imagen    
+                                    @else
+                                    <img src="{{ $item->url }}" alt="" style="width: 100px">
+                                    @endif
+                                </td>
+                                <td><a href="{{ route('edit', $item->id) }}" class="btn btn-warning"><i
+                                            class="fa-solid fa-pen-to-square"></i></a></td>
+                                <td><a href="{{ route('show', $item->id) }}" class="btn btn-danger"><i
+                                            class="fa-solid fa-trash"></i></a></td>
                             </tr>
                         @endforeach
                     </tbody>

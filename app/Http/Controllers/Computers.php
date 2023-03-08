@@ -39,6 +39,7 @@ class Computers extends Controller
     public function store(Request $request)
     {
         $descripcion = $request->filled('descripcion') ? $request->input('descripcion') : 'Sin descripcion';
+        $url = $request->filled('url')?$request->input('url'):'Sin imagen';
         $producto = new Computer();
         $producto->nombre = $request->nombre;
         $producto->marca = $request->marca;
@@ -47,7 +48,7 @@ class Computers extends Controller
         $producto->procesador = $request->procesador;
         $producto->discoDuro = $request->discoDuro;
         $producto->descripcion = $descripcion;
-        $producto->url = $request->url;
+        $producto->url = $url;
         $producto->save();
         return redirect('/');
     }
@@ -88,6 +89,7 @@ class Computers extends Controller
     public function update(Request $request, $id)
     {
         $descripcion = $request->filled('descripcion') ? $request->input('descripcion') : 'Sin descripcion';
+        $url = $request->filled('url')?$request->input('url'):'Sin imagen';
         $producto = Computer::find($id);
         $producto->nombre = $request->nombre;
         $producto->marca = $request->marca;
@@ -96,7 +98,7 @@ class Computers extends Controller
         $producto->procesador = $request->procesador;
         $producto->discoDuro = $request->discoDuro;
         $producto->descripcion = $descripcion;
-        $producto->url = $request->url;
+        $producto->url = $url;
         $producto->save();
         return redirect('/');
     }
